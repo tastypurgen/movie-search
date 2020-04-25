@@ -4,7 +4,10 @@ const axios = require('axios');
 
 const swiperWrapper = document.querySelector('.swiper-wrapper')
 
+
 export default (name) => {
+  swiperWrapper.innerHTML = '';
+
   axios.get(`http://www.omdbapi.com/?s=${name}&apikey=97782f03`)
     .then(function (response) {
       // handle success

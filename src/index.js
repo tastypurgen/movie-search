@@ -1,3 +1,12 @@
 import findMovies from './findMovies'
 
-findMovies('harry')
+const searchInput = document.querySelector('#search')
+
+findMovies('truman')
+
+document.querySelector('form').addEventListener('submit', (e) => {
+  e.preventDefault()
+  const search = searchInput.value
+  findMovies(search)
+})
+
