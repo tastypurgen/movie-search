@@ -1,2 +1,7 @@
-# tastypurgen-RS2020Q1
-Private repository for @tastypurgen
+# movie-search
+
+RSSchool task
+
+[Task](https://github.com/rolling-scopes-school/tasks/blob/master/tasks/movie-search.md)
+
+[Demo](https://tastypurgen-movie-search.netlify.app/)

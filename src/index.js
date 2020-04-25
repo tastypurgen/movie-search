@@ -1,1 +1,3 @@
-console.log('works fine')
+import findMovies from './findMovies'
+
+findMovies('harry')
