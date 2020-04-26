@@ -2,11 +2,13 @@ import findMovies from './findMovies'
 
 const searchInput = document.querySelector('#search')
 
-// findMovies('truman')
+findMovies('harry')
 
 document.querySelector('form').addEventListener('submit', (e) => {
   e.preventDefault()
-  const search = searchInput.value
+  const mySwiper = document.querySelector('.swiper-container').swiper;
+  const search = searchInput.value.trim()
+  mySwiper.destroy()
   findMovies(search)
 })
 
