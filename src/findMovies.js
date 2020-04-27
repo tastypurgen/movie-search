@@ -14,8 +14,8 @@ export default (name) => {
         movieEl.classList.add('swiper-slide')
         const posterLink = movie.Poster === 'N/A' ? 'img/404.jpg' : movie.Poster
         movieEl.innerHTML = `
-          <div class="card-header">${movie.Title}</div>
-          <img src="${posterLink}" style="width: 100%;">
+          <div class="card-title">${movie.Title}</div>
+          <img class="card-poster" src="${posterLink}">
           <div class="card-year">${movie.Year}</div>
           <div class="card-rating">${movie.Type}</div>
         `

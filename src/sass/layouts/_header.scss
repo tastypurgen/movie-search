@@ -1,0 +1,13 @@
+.header {
+	display: flex;
+	background: $color-secondary;
+	color: white;
+	justify-content: center;
+	align-items: center;
+}
+
+.logo {
+	width: 50px;
+	height: 100%;
+	margin: 0 10px;
+}

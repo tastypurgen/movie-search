@@ -1,0 +1,21 @@
+.search-form {
+	display: flex;
+	justify-content: center;
+	margin: 10px auto;
+	height: 30px;
+
+	input[type=text] {
+		border: 1px solid rgb(209, 209, 209);
+		border-radius: 5px 0 0 5px;
+
+		&::placeholder {
+			padding: 0 10px;
+		}
+	}
+	input[type=submit] {
+		border: 1px solid rgb(209, 209, 209);
+		border-left: none;
+		border-radius: 0 5px 5px 0;
+		padding: 0 10px;
+	}
+}
