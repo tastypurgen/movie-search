@@ -10,22 +10,24 @@
 
 <body>
   <header class="header">
-    <h1>MovieSearch</h1> <img class="logo" src="src/img/search.png" alt="">
+    <h1>MovieSearch</h1>
+    <img class="logo" src="src/img/search.png" alt="">
   </header>
+  <div class="container">
+    <form action="" class="search-form">
+      <input type="text" name="" id="search" placeholder="Search a movie" autocomplete="off" autofocus>
+      <button type="submit">Search</button>
+      <div class="clear"></div>
+    </form>
 
-  <form action="" class="search-form">
-    <input type="text" name="" id="search" placeholder="Search a movie">
-    <input type="submit" value="Search">
-  </form>
+    <div class="message-container"></div>
 
-  <!-- Swiper -->
-  <div class="swiper-container">
-    <div class="swiper-wrapper"></div>
-    <!-- Add Pagination -->
-    <div class="swiper-pagination"></div>
-    <!-- Add Arrows -->
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
+    <div class="swiper-container">
+      <div class="swiper-wrapper"></div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
   </div>
 </body>
 
