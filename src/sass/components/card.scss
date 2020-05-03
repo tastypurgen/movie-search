@@ -1,15 +1,23 @@
 .swiper-slide {
-	text-align: center;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
 	// height: 450px;
 	font-size: 1rem;
 }
 
 .card-title {
 	font-size: 1.1rem;
+	width: 100%;
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
 	font-weight: bolder;
+
+	a {
+		text-decoration: none;
+		color: black;
+	}
 }
 
 .card-poster {
@@ -19,5 +27,13 @@
 }
 
 .card-rating {
+	text-align: center;
+	font-weight: 400;
+	padding-top: 6px;
 	margin-bottom: 35px;
+	width: 35px;
+	height: 35px;
+	background-image: url("/img/star.svg");
+	background-size: cover;
+	background-repeat: no-repeat;
 }
