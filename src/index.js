@@ -12,6 +12,8 @@ clearBtn.addEventListener('click', () => {
 
 document.querySelector('form').addEventListener('submit', (e) => {
   e.preventDefault();
+  const mySwiper = document.querySelector('.swiper-container').swiper;
+  mySwiper.removeAllSlides();
   const search = searchInput.value.trim();
   findMovies(search);
 });

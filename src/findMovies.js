@@ -1,39 +1,37 @@
-import apiKey from './constants'
+import 'regenerator-runtime';
+import apiKey from './constants';
 import params from './swiper.params';
 import Swiper from './swiper';
-import createCard from './createCard'
-import "regenerator-runtime/runtime";
+import createCard from './createCard';
+import endSwiperHandler from './endSwiperHandler';
+import { hideInterface, showInterface } from './utils';
 
 const axios = require('axios');
 
 const message = document.querySelector('.message-container');
-const swiperWrapper = document.querySelector('.swiper-wrapper');
-const loadingImg = document.querySelector('.loading')
 
-export default (name) => {
-  loadingImg.classList.remove('hidden')
-  axios.get(`https://www.omdbapi.com/?s=${name}&apikey=${apiKey}`)
+const mySwiper = new Swiper('.swiper-container', params);
+
+export default (name, page = 1) => {
+  hideInterface();
+  axios.get(`https://www.omdbapi.com/?s=${name}&page=${page}&apikey=${apiKey}`)
     .then((response) => {
-      // console.log(response)
+      // console.log(response);
       if (response.data.Response === 'False') {
         message.innerHTML = `No results for <b>${name}</b>  ¯\\_(ツ)_/¯`;
       } else {
-        const mySwiper = document.querySelector('.swiper-container').swiper;
-        if (mySwiper) {
-          mySwiper.destroy();
-          swiperWrapper.innerHTML = '';
-        }
-        response.data.Search.forEach((movie, i) => {
-          if (i <= 11) {
-            message.innerHTML = '';
-            createCard(movie)
-          }
+        message.innerHTML = `Found ${response.data.totalResults} results! :)`;
+        response.data.Search.forEach(async (movie) => {
+          axios.get(`https://www.omdbapi.com/?i=${movie.imdbID}&apikey=${apiKey}`)
+            .then((movieData) => {
+              mySwiper.appendSlide(createCard(movieData.data));
+            })
+            .catch((error) => {
+              message.innerHTML = error;
+            });
+          showInterface();
         });
-        new Swiper('.swiper-container', params);
-        loadingImg.classList.add('hidden')
       }
-    })
-    .catch((error) => {
-      message.innerHTML = error;
+      endSwiperHandler();
     });
 };

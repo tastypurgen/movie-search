@@ -4,7 +4,8 @@
 	"description": "Private repository for @tastypurgen",
 	"main": "index.js",
 	"dependencies": {
-		"axios": "^0.19.2"
+		"axios": "^0.19.2",
+		"regenerator-runtime": "^0.13.5"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.9.6",
