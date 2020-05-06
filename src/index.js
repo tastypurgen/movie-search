@@ -1,9 +1,9 @@
-import findMovies from './findMovies';
+import movieSearch from './movieSearch';
 
 const searchInput = document.querySelector('#search');
 const clearBtn = document.querySelector('.clear');
 
-findMovies('harry');
+movieSearch('harry');
 
 clearBtn.addEventListener('click', () => {
   searchInput.value = '';
@@ -15,5 +15,5 @@ document.querySelector('form').addEventListener('submit', (e) => {
   const mySwiper = document.querySelector('.swiper-container').swiper;
   mySwiper.removeAllSlides();
   const search = searchInput.value.trim();
-  findMovies(search);
+  movieSearch(search);
 });

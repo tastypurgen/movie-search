@@ -2,28 +2,43 @@
 	display: flex;
 	align-items: center;
 	flex-direction: column;
-	// height: 450px;
 	font-size: 1rem;
+	transition: .2s;
 }
 
 .card-title {
 	font-size: 1.1rem;
 	width: 100%;
+	text-align: center;
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
 	font-weight: bolder;
+	transition: .2s;
 
 	a {
 		text-decoration: none;
 		color: black;
+
+		&:hover {
+			text-decoration: underline;
+		}
 	}
 }
 
 .card-poster {
 	width: 100%;
-	// width: 300px;
-	// height: 350px;
+	width: 195px;
+	height: 285px;
+	box-shadow: 1px 1px 20px 2px rgba(171, 171, 171, 1);
+	transition: .3s;
+	border-radius: 5px;
+
+	&:hover {
+		transform: scale(1.01);
+		box-shadow: 1px 1px 25px 4px rgba(171, 171, 171, 1);
+		cursor: pointer;
+	}
 }
 
 .card-rating {

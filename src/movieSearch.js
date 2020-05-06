@@ -13,7 +13,6 @@ const message = document.querySelector('.message-container');
 
 const mySwiper = new Swiper('.swiper-container', params);
 let page = 1;
-let lastSlide = 6;
 let isFirstSearch = true;
 
 function findMovies(name, isSameSearch = false) {
@@ -22,15 +21,13 @@ function findMovies(name, isSameSearch = false) {
     isFirstSearch = false;
     page = 1;
     mySwiper.on('slideChange', () => {
-      if (mySwiper.activeIndex === lastSlide) {
+      if (mySwiper.isEnd && !mySwiper.isBeginning) {
         findMovies(input.value || 'harry', true);
-        lastSlide += 10;
       }
     });
   }
   if (!isSameSearch) {
     page = 1;
-    lastSlide = 6;
   } else {
     page += 1;
   }
@@ -44,23 +41,24 @@ function findMovies(name, isSameSearch = false) {
           axios.get(`https://www.omdbapi.com/?i=${movie.imdbID}&apikey=${apiKey}`)
             .then((movieData) => {
               mySwiper.appendSlide(createCard(movieData.data));
+              showInterface();
             })
             .catch((error) => {
               message.innerHTML = error;
+              showInterface();
             });
         });
       }
     })
     .catch((error) => {
-      showInterface();
       if (JSON.stringify(error).includes('Request failed with status code 401')) message.innerHTML = 'Daily limit is reached!:(<br>Please try again tomorrow';
       else {
         message.innerHTML = 'Unknown error! :(';
         // eslint-disable-next-line no-console
         console.log(error);
       }
+      showInterface();
     });
-  showInterface();
 }
 
 export default findMovies;
