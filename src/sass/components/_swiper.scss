@@ -1,16 +1,17 @@
 .swiper-container {
 	width: 90%;
-	user-select: none;
 }
 
 .swiper-button-prev,
 .swiper-container-rtl .swiper-button-next {
 	left: 1%;
 	right: auto;
+	outline: none;
 }
 
 .swiper-button-next,
 .swiper-container-rtl .swiper-button-prev {
 	right: 1%;
 	left: auto;
+	outline: none;
 }
