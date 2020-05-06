@@ -37,6 +37,7 @@ function findMovies(name, isSameSearch = false) {
       if (response.data.Response === 'False') {
         message.innerHTML = `No results for <b>${name}</b>  ¯\\_(ツ)_/¯`;
       } else {
+        message.innerHTML = '';
         response.data.Search.forEach(async (movie) => {
           axios.get(`https://www.omdbapi.com/?i=${movie.imdbID}&apikey=${apiKey}`)
             .then((movieData) => {
