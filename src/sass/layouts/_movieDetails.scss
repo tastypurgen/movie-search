@@ -1,0 +1,66 @@
+.movie-modal {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	top: 0;
+	left: 0;
+	background: #0009;
+	z-index: 10;
+
+	#close-modal {
+		position: absolute;
+		top: 10%;
+		right: 5%;
+		width: 25px;
+		height: 25px;
+		background-image: url("/img/close.png");
+		cursor: pointer;
+	}
+
+	.movie-details {
+		position: relative;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		flex-wrap: nowrap;
+		height: 70vh;
+		margin: 0 50px;
+		color: white;
+		background: rgba(0, 0, 0, 0.7);
+		border-radius: 10px;
+
+		&__poster {
+			height: 90%;
+
+			img {
+				height: 100%;
+			}
+		}
+
+		&__info {
+			font-size: 1.2rem;
+			text-align: center;
+			width: 40%;
+			color: rgb(187, 187, 187);
+
+			.movie-details__title {
+				font-size: 1.4rem;
+				margin-bottom: 10px;
+				color: rgb(255, 255, 255);
+			}
+
+			.movie-details__actors {
+				font-size: 1.1rem;
+				margin-bottom: 10px;
+			}
+
+			.movie-details__plot {
+				font-size: 1rem;
+				text-align: justify;
+			}
+		}
+	}
+}
