@@ -5,8 +5,8 @@ export default {
       slidesPerView: 1,
       spaceBetween: 10,
     },
-    // when window width is >= 501px
-    501: {
+    // when window width is >= 450px
+    450: {
       slidesPerView: 2,
       spaceBetween: 20,
     },
