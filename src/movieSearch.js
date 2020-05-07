@@ -26,14 +26,15 @@ function findMovies(name, isSameSearch = false) {
       }
     });
   }
-  if (!isSameSearch) {
-    page = 1;
-  } else {
-    page += 1;
-  }
+  if (!isSameSearch) page = 1;
+  else page += 1;
+
   axios.get(`https://www.omdbapi.com/?s=${name}&page=${page}&apikey=${apiKey}`)
     .then((response) => {
       // console.log(response);
+      if (response.data.totalResults <= Number(10)) {
+        mySwiper.off('slideChange');
+      }
       if (response.data.Response === 'False') {
         message.innerHTML = `No results for <b>${name}</b>  ¯\\_(ツ)_/¯`;
       } else {
