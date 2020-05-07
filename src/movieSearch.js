@@ -4,6 +4,7 @@ import params from './swiper.params';
 import Swiper from './swiper';
 import createCard from './createCard';
 import { hideInterface, showInterface } from './utils';
+import renderMovieDetails from './renderMovieDetails';
 
 const axios = require('axios');
 
@@ -42,8 +43,15 @@ function findMovies(name, isSameSearch = false) {
         response.data.Search.forEach(async (movie) => {
           axios.get(`https://www.omdbapi.com/?i=${movie.imdbID}&apikey=${apiKey}`)
             .then((movieData) => {
+              // console.log(movieData);
               mySwiper.appendSlide(createCard(movieData.data));
               showInterface();
+              const posters = document.querySelectorAll('.card-poster');
+              posters.forEach((poster) => {
+                poster.addEventListener('click', (e) => {
+                  renderMovieDetails(e.target);
+                });
+              });
             })
             .catch((error) => {
               message.innerHTML = error;

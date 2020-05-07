@@ -10,6 +10,11 @@ export default function createCard(movie) {
       <div class="card-year">${movie.Year}</div>
       <div class="card-type">${movie.Type}</div>
       <div class="card-rating">${rating}</div>
+      <div class="modal-poster hidden">${posterLink}</div>
+      <div class="modal-title hidden">${movie.Title}</div>
+      <div class="modal-released hidden">${movie.Released}</div>
+      <div class="modal-actors hidden">${movie.Actors}</div>
+      <div class="modal-plot hidden">${movie.Plot}</div>
     </div>
   `;
 }
