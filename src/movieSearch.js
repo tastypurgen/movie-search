@@ -1,5 +1,5 @@
 import 'regenerator-runtime';
-import apiKey from './constants';
+import { apiKey, yKey } from './constants';
 import params from './swiper.params';
 import Swiper from './swiper';
 import createCard from './createCard';
@@ -16,7 +16,7 @@ const mySwiper = new Swiper('.swiper-container', params);
 let page = 1;
 let isFirstSearch = true;
 
-function findMovies(name, isSameSearch = false) {
+async function findMovies(name, isSameSearch = false) {
   hideInterface();
   if (isFirstSearch) {
     isFirstSearch = false;
@@ -30,7 +30,10 @@ function findMovies(name, isSameSearch = false) {
   if (!isSameSearch) page = 1;
   else page += 1;
 
-  axios.get(`https://www.omdbapi.com/?s=${name}&page=${page}&apikey=${apiKey}`)
+  const translateReq = await axios.get(`https://translate.yandex.net/api/v1.5/tr.json/translate?key=${yKey}&text=${name}&lang=ru-en`);
+  const translate = translateReq.data.text[0];
+
+  axios.get(`https://www.omdbapi.com/?s=${translate}&page=${page}&apikey=${apiKey}`)
     .then((response) => {
       // console.log(response);
       if (response.data.totalResults <= Number(10)) {
@@ -39,7 +42,9 @@ function findMovies(name, isSameSearch = false) {
       if (response.data.Response === 'False') {
         message.innerHTML = `No results for <b>${name}</b>  ¯\\_(ツ)_/¯`;
       } else {
-        message.innerHTML = '';
+        if (name !== translate) message.innerHTML = `Showing results for <b>${translate}</b>`;
+        else message.innerHTML = '';
+        mySwiper.removeAllSlides();
         response.data.Search.forEach(async (movie) => {
           axios.get(`https://www.omdbapi.com/?i=${movie.imdbID}&apikey=${apiKey}`)
             .then((movieData) => {
@@ -55,7 +60,6 @@ function findMovies(name, isSameSearch = false) {
             })
             .catch((error) => {
               message.innerHTML = error;
-              showInterface();
             });
         });
       }
@@ -67,6 +71,8 @@ function findMovies(name, isSameSearch = false) {
         // eslint-disable-next-line no-console
         console.log(error);
       }
+    })
+    .then(() => {
       showInterface();
     });
 }
