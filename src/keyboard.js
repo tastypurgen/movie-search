@@ -200,8 +200,4 @@ function keyUp({ key, altKey, ctrlKey }) {
   else document.querySelector('#CapsLock').classList.remove('active');
 }
 
-document.addEventListener('keydown', keyPress);
-
-document.addEventListener('keyup', keyUp);
-
 export default createKeyboard;

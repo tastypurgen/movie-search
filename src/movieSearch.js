@@ -10,6 +10,7 @@ import renderMovieDetails from './renderMovieDetails';
 const input = document.querySelector('#search');
 
 const mySwiper = new Swiper('.swiper-container', params);
+const SLIDER_COUNT = 10;
 let page = 1;
 let isFirstSearch = true;
 
@@ -33,51 +34,45 @@ async function findMovies(name, isSameSearch = false) {
   const translateReq = await axios.get(`https://translate.yandex.net/api/v1.5/tr.json/translate?key=${yKey}&text=${name}&lang=ru-en`);
   const translate = translateReq.data.text[0];
 
-  axios.get(`https://www.omdbapi.com/?s=${translate}&page=${page}&apikey=${apiKey}`)
+  try {
     // get movies list
-    .then((response) => {
-      // console.log(response);
-      if (response.data.totalResults <= Number(10)) {
-        mySwiper.off('slideChange');
-      }
-      if (response.data.Response === 'False') {
-        editMessage(`No results for <b>${name}</b>  ¯\\_(ツ)_/¯`);
-      } else {
-        if (name !== translate) editMessage(`Showing results for <b>${translate}</b>`);
-        else editMessage();
+    const response = await axios.get(`https://www.omdbapi.com/?s=${translate}&page=${page}&apikey=${apiKey}`);
 
-        if (page === 1) mySwiper.removeAllSlides();
+    if (response.data.totalResults <= SLIDER_COUNT) {
+      mySwiper.off('slideChange');
+    }
+    if (response.data.Response === 'False') {
+      editMessage(`No results for <b>${name}</b>  ¯\\_(ツ)_/¯`);
+    } else {
+      if (name !== translate) editMessage(`Showing results for <b>${translate}</b>`);
+      else editMessage();
 
-        // get details for every movie
-        response.data.Search.forEach((movie) => {
-          axios.get(`https://www.omdbapi.com/?i=${movie.imdbID}&apikey=${apiKey}`)
-            .then((movieData) => {
-              mySwiper.appendSlide(createCard(movieData.data));
-              showInterface();
-              const posters = document.querySelectorAll('.card-poster');
-              posters.forEach((poster) => {
-                poster.addEventListener('click', (e) => {
-                  renderMovieDetails(e.target);
-                });
-              });
-            })
-            .catch((error) => {
-              editMessage(error);
-            });
+      // get details for every movie
+      const movieDataArray = await Promise.all(
+        response
+          .data
+          .Search.map(async (movie) => {
+            const movieData = await axios.get(`https://www.omdbapi.com/?i=${movie.imdbID}&apikey=${apiKey}`);
+            return movieData;
+          }),
+      );
+      if (page === 1) mySwiper.removeAllSlides();
+      movieDataArray.forEach((movieData) => {
+        mySwiper.appendSlide(createCard(movieData.data));
+      });
+
+      const posters = document.querySelectorAll('.card-poster');
+      posters.forEach((poster) => {
+        poster.addEventListener('click', (e) => {
+          renderMovieDetails(e.target);
         });
-      }
-    })
-    .catch((error) => {
-      if (JSON.stringify(error).includes('Request failed with status code 401')) editMessage('Daily limit is reached!:(<br>Please try again tomorrow');
-      else {
-        editMessage('Unknown error! :(');
-        // eslint-disable-next-line no-console
-        console.log(error);
-      }
-    })
-    .then(() => {
-      showInterface();
-    });
+      });
+    }
+  } catch (error) {
+    editMessage(error);
+  } finally {
+    showInterface();
+  }
 }
 
 export default findMovies;
