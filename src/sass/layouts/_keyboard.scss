@@ -1,0 +1,150 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	user-select: none;
+}
+
+.board-container {
+	font-family: Arial, Helvetica, sans-serif;
+	background: #0005;
+	width: 750px;
+	margin: 0 auto;
+	font-size: 20px;
+
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%);
+	z-index: 2;
+}
+
+.board {
+	border-radius: 5px;
+	background-color: rgb(71, 71, 71);
+	padding: 10px;
+	box-shadow: 0px 25px 120px 70px rgb(231, 231, 231);
+}
+
+.row {
+	display: flex;
+	margin: 1px 0;
+}
+
+.key {
+	position: relative;
+	margin: 2px;
+	width: 100%;
+	cursor: pointer;
+	color: rgb(221, 221, 221);
+	background-color: rgb(46, 46, 46);
+	border: 1px solid rgba(65, 65, 65, 0.333);
+	border-radius: 6px;
+	padding: 1%;
+	box-shadow: rgb(133, 133, 133) 1px 2px;
+
+	transition: all .1s linear;
+}
+
+.active,
+.key:active {
+	background-color: rgba(46, 46, 46, 0.432);
+	top: 1px;
+	left: 1px;
+	box-shadow: none;
+}
+
+#space {
+	width: 600%;
+}
+
+#Shift {
+	width: 122%;
+	pointer-events: none;
+	opacity: 0.4;
+}
+
+#Lang {
+	background-size: 20px;
+	background-image: url('/img/globe.svg');
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+#Win {
+	background-size: 20px;
+	background-image: url('/img/win.svg');
+	background-repeat: no-repeat;
+	background-position: center;
+	pointer-events: none;
+	opacity: 0.4;
+}
+
+#ArrowUp {
+	/* width: 180%; */
+	background-size: 20px;
+	background-image: url('/img/up.svg');
+	background-repeat: no-repeat;
+	background-position: center;
+	pointer-events: none;
+	opacity: 0.4;
+}
+
+#ArrowLeft {
+	background-size: 12px;
+	background-image: url('/img/left.svg');
+	background-repeat: no-repeat;
+	background-position: center;
+	pointer-events: none;
+	opacity: 0.4;
+}
+
+#ArrowDown {
+	background-size: 20px;
+	background-image: url('/img/down.svg');
+	background-repeat: no-repeat;
+	background-position: center;
+	pointer-events: none;
+	opacity: 0.4;
+}
+
+#ArrowRight {
+	background-size: 12px;
+	background-image: url('/img/right.svg');
+	background-repeat: no-repeat;
+	background-position: center;
+	pointer-events: none;
+	opacity: 0.4;
+}
+
+#Fn,
+#CapsLock,
+#Tab,
+#Alt,
+#Control {
+	pointer-events: none;
+	opacity: 0.4;
+}
+
+#Backspace {
+	background-size: 20px;
+	background-image: url('/img/backspace.svg');
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.subtitle {
+	margin-top: 5px;
+	position: relative;
+	color: rgb(112, 112, 112);
+
+	&::after {
+		content: "";
+		position: absolute;
+		width: 25px;
+		height: 25px;
+		left: 175px;
+		top: 0px;
+		background-image: url('/img/globe.svg');
+		opacity: 0.5;
+	}
+}
