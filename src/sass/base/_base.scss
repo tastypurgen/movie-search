@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@400;500;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@400;500;600&display=swap");
 
 * {
 	margin: 0;
@@ -7,13 +7,14 @@
 }
 
 body {
-	font-family: 'Baloo Bhai 2', cursive;
+	font-family: "Baloo Bhai 2", cursive;
 	font-weight: normal;
 	font-size: 10px;
 }
 
 .container {
 	position: relative;
+	min-height: 500px;
 	max-width: 1200px;
 	margin: 0 auto;
 }

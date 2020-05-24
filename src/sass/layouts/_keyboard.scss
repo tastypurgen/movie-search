@@ -42,7 +42,7 @@
 	padding: 1%;
 	box-shadow: rgb(133, 133, 133) 1px 2px;
 
-	transition: all .1s linear;
+	transition: all 0.1s linear;
 }
 
 .active,
@@ -65,14 +65,14 @@
 
 #Lang {
 	background-size: 20px;
-	background-image: url('/img/globe.svg');
+	background-image: url("/img/globe.svg");
 	background-repeat: no-repeat;
 	background-position: center;
 }
 
 #Win {
 	background-size: 20px;
-	background-image: url('/img/win.svg');
+	background-image: url("/img/win.svg");
 	background-repeat: no-repeat;
 	background-position: center;
 	pointer-events: none;
@@ -82,7 +82,7 @@
 #ArrowUp {
 	/* width: 180%; */
 	background-size: 20px;
-	background-image: url('/img/up.svg');
+	background-image: url("/img/up.svg");
 	background-repeat: no-repeat;
 	background-position: center;
 	pointer-events: none;
@@ -91,7 +91,7 @@
 
 #ArrowLeft {
 	background-size: 12px;
-	background-image: url('/img/left.svg');
+	background-image: url("/img/left.svg");
 	background-repeat: no-repeat;
 	background-position: center;
 	pointer-events: none;
@@ -100,7 +100,7 @@
 
 #ArrowDown {
 	background-size: 20px;
-	background-image: url('/img/down.svg');
+	background-image: url("/img/down.svg");
 	background-repeat: no-repeat;
 	background-position: center;
 	pointer-events: none;
@@ -109,7 +109,7 @@
 
 #ArrowRight {
 	background-size: 12px;
-	background-image: url('/img/right.svg');
+	background-image: url("/img/right.svg");
 	background-repeat: no-repeat;
 	background-position: center;
 	pointer-events: none;
@@ -127,7 +127,7 @@
 
 #Backspace {
 	background-size: 20px;
-	background-image: url('/img/backspace.svg');
+	background-image: url("/img/backspace.svg");
 	background-repeat: no-repeat;
 	background-position: center;
 }
@@ -144,7 +144,7 @@
 		height: 25px;
 		left: 175px;
 		top: 0px;
-		background-image: url('/img/globe.svg');
+		background-image: url("/img/globe.svg");
 		opacity: 0.5;
 	}
 }

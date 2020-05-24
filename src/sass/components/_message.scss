@@ -6,3 +6,9 @@
 	color: rgb(211, 86, 86);
 	text-align: center;
 }
+
+@media (max-width: 400px) {
+	.message-container {
+		font-size: 1.1em;
+	}
+}

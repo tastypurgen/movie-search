@@ -8,7 +8,7 @@
 	height: 30px;
 	z-index: 3;
 
-	input[type=text] {
+	input[type="text"] {
 		border: 1px solid rgb(209, 209, 209);
 		border-radius: 5px 0 0 5px;
 		padding: 0 10px;
@@ -19,7 +19,7 @@
 			padding: 0 5px;
 		}
 	}
-	button[type=submit] {
+	button[type="submit"] {
 		border: 1px solid rgb(209, 209, 209);
 		border-left: none;
 		border-radius: 0 5px 5px 0;
@@ -37,8 +37,8 @@
 		background-repeat: no-repeat;
 		right: 80px;
 		top: 6px;
-		opacity: .8;
-		transition: .2s;
+		opacity: 0.8;
+		transition: 0.2s;
 		cursor: pointer;
 	}
 

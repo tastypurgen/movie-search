@@ -3,7 +3,7 @@
 	align-items: center;
 	flex-direction: column;
 	font-size: 1rem;
-	transition: .2s;
+	transition: 0.2s;
 }
 
 .card-title {
@@ -14,7 +14,7 @@
 	white-space: nowrap;
 	text-overflow: ellipsis;
 	font-weight: bolder;
-	transition: .2s;
+	transition: 0.2s;
 
 	a {
 		text-decoration: none;
@@ -31,8 +31,9 @@
 	width: 195px;
 	height: 285px;
 	box-shadow: 1px 1px 20px 2px rgba(171, 171, 171, 1);
-	transition: .3s;
+	transition: 0.3s;
 	border-radius: 5px;
+	object-fit: cover;
 
 	&:hover {
 		transform: scale(1.01);

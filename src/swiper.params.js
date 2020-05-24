@@ -21,10 +21,11 @@ export default {
       spaceBetween: 40,
     },
   },
-  spaceBetween: 15,
   pagination: {
     el: '.swiper-pagination',
     clickable: true,
+    dynamicBullets: true,
+    dynamicMainBullets: 6,
   },
   navigation: {
     nextEl: '.swiper-button-next',

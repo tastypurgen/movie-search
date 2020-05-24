@@ -1,7 +1,7 @@
 import 'regenerator-runtime';
 import axios from 'axios';
+import Swiper from 'swiper';
 import { apiKey, yKey } from './constants';
-import Swiper from './swiper';
 import params from './swiper.params';
 import createCard from './createCard';
 import { hideInterface, showInterface, editMessage } from './utils';
@@ -31,18 +31,20 @@ async function findMovies(name, isSameSearch = false) {
   if (!isSameSearch) page = 1;
   else page += 1;
 
-  const translateReq = await axios.get(`https://translate.yandex.net/api/v1.5/tr.json/translate?key=${yKey}&text=${name}&lang=ru-en`);
-  const translate = translateReq.data.text[0];
+  let translateReq;
+  if (name !== '') translateReq = await axios.get(`https://translate.yandex.net/api/v1.5/tr.json/translate?key=${yKey}&text=${name}&lang=ru-en`);
+  const translate = typeof translateReq === 'undefined' ? ' ' : translateReq.data.text[0];
 
   try {
     // get movies list
     const response = await axios.get(`https://www.omdbapi.com/?s=${translate}&page=${page}&apikey=${apiKey}`);
 
-    if (response.data.totalResults <= SLIDER_COUNT) {
+    if (response.data.totalResults === SLIDER_COUNT) {
       mySwiper.off('slideChange');
     }
     if (response.data.Response === 'False') {
       editMessage(`No results for <b>${name}</b>  ¯\\_(ツ)_/¯`);
+      if (name.length < 3) editMessage('Name too short!');
     } else {
       if (name !== translate) editMessage(`Showing results for <b>${translate}</b>`);
       else editMessage();

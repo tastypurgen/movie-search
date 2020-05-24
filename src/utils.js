@@ -16,5 +16,3 @@ export function showInterface() {
   nextBtn.classList.remove('hidden');
   loader.classList.add('hidden');
 }
-
-export default { hideInterface, showInterface };

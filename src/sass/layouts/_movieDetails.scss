@@ -41,26 +41,39 @@
 		}
 
 		&__info {
-			font-size: 1.2rem;
+			font-size: 1.2em;
 			text-align: center;
 			width: 40%;
 			color: rgb(187, 187, 187);
 
 			.movie-details__title {
-				font-size: 1.4rem;
+				font-size: 1.4em;
 				margin-bottom: 10px;
 				color: rgb(255, 255, 255);
 			}
 
 			.movie-details__actors {
-				font-size: 1.1rem;
+				font-size: 1.1em;
 				margin-bottom: 10px;
 			}
 
 			.movie-details__plot {
-				font-size: 1rem;
+				font-size: 1em;
 				text-align: justify;
 			}
 		}
+	}
+}
+
+@media (max-width: 850px) {
+	.movie-details__poster {
+		height: 30% !important;
+	}
+}
+
+@media (max-width: 550px) {
+	.movie-details {
+		margin: 0 !important;
+		height: 95vh !important;
 	}
 }
