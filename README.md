@@ -1,7 +1,7 @@
 # movie-search
 
-RSSchool task
+An application for searching detailed film description.
 
-[Task](https://github.com/rolling-scopes-school/tasks/blob/master/tasks/movie-search.md)
+[Link to Demo](https://tastypurgen-movie-search.netlify.app/)
 
-[Demo](https://tastypurgen-movie-search.netlify.app/)
+[Link to task](https://github.com/tastypurgen/movie-search/blob/master/task.md)
