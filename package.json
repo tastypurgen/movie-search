@@ -4,7 +4,7 @@
 	"description": "Private repository for @tastypurgen",
 	"main": "index.js",
 	"dependencies": {
-		"axios": "^0.19.2",
+		"axios": "^0.21.1",
 		"regenerator-runtime": "^0.13.5",
 		"swiper": "^5.4.5"
 	},
