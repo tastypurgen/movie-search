@@ -40,7 +40,6 @@ const keys = {
   ],
 };
 
-
 function createKey(key) {
   const keyEl = document.createElement('div');
   keyEl.classList.add('key');
