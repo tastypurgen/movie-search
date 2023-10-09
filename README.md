@@ -1,6 +1,6 @@
 # movie-search
 
-An application for searching detailed film description.
+The film description search application.
 
 [Demo](https://tastypurgen-movie-search.netlify.app/)
 
